@@ -13,9 +13,9 @@ public class LoanCalc {
      */
 	public static void main(String[] args) {		
 		// Gets the loan data
-		double loan = 100000;
-        double rate = 5;
-        int n = 10;
+		double loan = Integer.parseInt(args[1]);
+        double rate = Integer.parseInt(args[2]);
+        int n = Integer.parseInt(args[3]);
         System.out.println("Loan sum = " + loan + ", interest rate = " + rate + "%, periods = " + n);
 
 		// Computes the periodical payment using brute force search
