@@ -11,7 +11,21 @@ public class UniqueChars {
      * unless they are space characters.
      */
     public static String uniqueChars(String s) {
-        // Replace the following statement with your code
-        return null;
+        String uniqueCharcaters = "";
+
+        for(int i = 0; i < s.length(); i++){
+            char currentChar = s.charAt(i);
+            if(currentChar != ' '){
+                if(uniqueCharcaters.indexOf(currentChar) == -1){
+                    uniqueCharcaters = uniqueCharcaters + currentChar;
+                }
+            }
+            else{
+                uniqueCharcaters = uniqueCharcaters + currentChar;
+            }
+
+        }
+
+        return uniqueCharcaters;
     }
 }
