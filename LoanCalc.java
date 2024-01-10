@@ -13,9 +13,9 @@ public class LoanCalc {
      */
 	public static void main(String[] args) {		
 		// Gets the loan data
-		double loan = Integer.parseInt(args[1]);
-        double rate = Integer.parseInt(args[2]);
-        int n = Integer.parseInt(args[3]);
+		double loan = Double.parseDouble(args[0]);
+        double rate = Double.parseDouble(args[1]);
+        int n = Integer.parseInt(args[2]);
         System.out.println("Loan sum = " + loan + ", interest rate = " + rate + "%, periods = " + n);
 
 		// Computes the periodical payment using brute force search
@@ -60,7 +60,8 @@ public class LoanCalc {
         double lo = 0;
         double hi = loan / n * n; // Initial values for bisection
         double guess = (lo + hi) / 2;
-
+        int iterationCounter = 0;
+        
         while ((hi - lo) > epsilon) {
             if (endBalance(loan, rate, n, guess) * endBalance(loan, rate, n, lo) > 0) {
                 lo = guess;
