@@ -1,7 +1,7 @@
 /*** 
  * Prints the calendars of all the years in the 20th century.
  */
-public class Calendar1 {	
+public class Calendar {	
     // Starting the calendar on 1/1/1900
 	static int dayOfMonth = 1;   
 	static int month = 1;
@@ -14,13 +14,14 @@ public class Calendar1 {
 	 * number of Sundays that occured on the first day of the month during this period.
 	 */
 	public static void main(String args[]) {
+		int lastYear = Integer.parseInt(args[0]);
         int debugDaysCounter = 0;
-        while (year <= 1999) { // Iterate through years until 1999
+        while (year <= lastYear) { // Iterate through years until 1999
             advance();
             debugDaysCounter++;
-            if (month == 12 && dayOfMonth == 31 && year == 1999) {
+            if (month == 12 && dayOfMonth == 31 && year == lastYear) {
                 break;
-            }
+            };
             // You can add any specific conditions to stop the loop if needed.
         }
         // Additional code if necessary after the loop.
