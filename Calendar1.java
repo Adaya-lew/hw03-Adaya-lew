@@ -24,7 +24,7 @@ public class Calendar1 {
             }
             // You can add any specific conditions to stop the loop if needed.
         }
-        System.out.println("During the 20th century, " + countSundays + " Sundays fell on the first day of month ");
+        System.out.println("During the 20th century, " + countSundays + " Sundays fell on the first day of month");
         // Additional code if necessary after the loop.
     }
 	 // Advances the date (day, month, year) and the day-of-the-week.
@@ -44,9 +44,7 @@ public class Calendar1 {
 			 nDaysInMonth = nDaysInMonth(month, year);
 		 }
 
-		 System.out.print(dayOfMonth + "/");
-		 System.out.print(month + "ֿֿ/");
-		 System.out.print(year);
+		 System.out.print(dayOfMonth + "/" + month + "ֿֿ/" + year);
 		 if (dayOfWeek == 1 && dayOfMonth == 1) {
 			 System.out.println(" Sunday");
 			 countSundays++;
