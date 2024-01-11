@@ -1,40 +1,36 @@
-/*** 
+/** 
  * Prints the calendars of all the years in the 20th century.
  */
 public class Calendar {	
-    // Starting the calendar on 1/1/1900
+    // Starting the calendar on 1/1/1900                                                        //already gave us the info that 1/1/1900 was a Monday and the number of days in that month
 	static int dayOfMonth = 1;   
 	static int month = 1;
 	static int year = 1900;
 	static int dayOfWeek = 2;     // 1.1.1900 was a Monday
 	static int nDaysInMonth = 31; // Number of days in January
-	static int countSundays = 0;
 
-	/** 
-	 * Prints the calendars of all the years in the 20th century. Also prints the  
-	 * number of Sundays that occured on the first day of the month during this period.
-	 */
+	
 	public static void main(String args[]) {
-		int lastYear = Integer.parseInt(args[0]);
-        int debugDaysCounter = 0;
-        while (year <= lastYear) { // Iterate through years until 1999
-            advance();
-            debugDaysCounter++;
-            if (month == 12 && dayOfMonth == 31 && year == lastYear) {
-                break;
-            };
-            // You can add any specific conditions to stop the loop if needed.
+		int givenYear = Integer.parseInt(args[0]);
+	    while (dayOfMonth != 31 || month != 12 || year != givenYear - 1) {
+	    	advance();
+		}
+ 
+		advance();
+	 	while (dayOfMonth != 31 || month != 12 || year != givenYear) {
+	 		if (dayOfWeek == 1) 
+	 			System.out.println(dayOfMonth + "/" + month + "/" + year + " Sunday");	
+	 		else 
+	 			System.out.println(dayOfMonth + "/" + month + "/" + year);
+	 		advance();
         }
-        // Additional code if necessary after the loop.
-        System.out.println("During the 20th century, " + countSundays + " Sundays fell on the first day of month");
-
-    }
-	 // Advances the date (day, month, year) and the day-of-the-week.
-	 // If the month changes, sets the number of days in this month.
-	 // Side effects: changes the static variables dayOfMonth, month, year, dayOfWeek, nDaysInMonth.
+        System.out.println("31/12/" + givenYear);
+        }
 	 
-	 private static void advance() {
-		 dayOfMonth++;
+	
+	 
+	 private static void advance() {                                   
+		dayOfMonth++;
 		 dayOfWeek = (dayOfWeek % 7) + 1;
 		 if(dayOfMonth > nDaysInMonth){
 			 month++;
@@ -43,36 +39,24 @@ public class Calendar {
 				 year++;
 				 month = 1;
 			 }
+
 			 nDaysInMonth = nDaysInMonth(month, year);
 		 }
-
-		 System.out.print(dayOfMonth + "/");
-		 System.out.print(month + "ֿֿ/");
-		 System.out.print(year);
-		 if (dayOfWeek == 1 && dayOfMonth == 1) {
-			 System.out.println(" Sunday");
-			 countSundays++;
-		 } else {
-			 System.out.println();
-		 }
-
-	 } 
+	 }
+		
 		 
-    // Returns true if the given year is a leap year, false otherwise.
-	private static boolean isLeapYear(int year) {
-		if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0){
-			return true;
+	public static boolean isLeapYear(int year) {                                           //input year returns boolean true or false (if its a leap year)
+	    // Replace the following statement with your code
+		
+		if ((year%4==0 && year%100!=0) || year%400==0){                  //how to test if a year is a leap year (why || and not another &&?)
+		  return true;
 		}
-		else {
-			return false;
+		else{
+		return false;
 		}
 	}
 	 
-	// Returns the number of days in the given month and year.
-	// April, June, September, and November have 30 days each.
-	// February has 28 days in a common year, and 29 days in a leap year.
-	// All the other months have 31 days.
-	public static int nDaysInMonth(int month, int year) {
+	private static int nDaysInMonth(int month, int year) {
 		if(month == 4 || month == 6 || month == 9 || month == 11){
 			return 30;
 		}
